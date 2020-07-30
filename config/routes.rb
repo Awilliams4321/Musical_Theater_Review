@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/reviews', to: 'reviews#index'
   get '/reviews/new', to: 'reviews#new'
   post '/reviews', to: 'reviews#create'
   resources :musicals
