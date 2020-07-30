@@ -5,6 +5,8 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.string :content
       t.string :public_name
       t.date :date
+      t.belongs_to :user
+      t.belongs_to :musical
 
       t.timestamps
     end
