@@ -1,0 +1,9 @@
+<%= link_to 'Log Out', logout_path, method: :delete %>
+
+<% @reviews.each do |r| %>
+    <%= r.headline %><br>
+    <%= r.content %><br>
+    <%= r.public_name %>
+<% end %>    
+
+list of reviews
