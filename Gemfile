@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
  #Add Github OmniAuth 
  gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
+ #Enabling secure ENV Key Value pairs
+ gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
