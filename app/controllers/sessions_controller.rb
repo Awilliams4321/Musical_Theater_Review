@@ -20,6 +20,16 @@ class SessionsController < ApplicationController
     end
 
     def github
+        
+        # user = User.find_or_create_by(uid: auth['uid']) do |u|
+        #     u.name = auth['info']['name']
+        #     u.email = auth['info']['email']
+        #     u.image = auth['info']['image']
+        #   end
+       
+        #   session[:user_id] = user.id
+       
+        #   redirect_to musicals_path
 
     end
 
@@ -27,6 +37,10 @@ class SessionsController < ApplicationController
     
     def session_params
         params.require(:session).permit(:username, :email, :password)
+    end
+
+    def github_params
+        request.env['omniauth.auth']
     end
 
 
