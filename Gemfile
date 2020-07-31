@@ -22,6 +22,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 
+ #Add Github OmniAuth 
+ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
