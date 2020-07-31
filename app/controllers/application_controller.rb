@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  
+
     helpers do 
         def is_logged_in?
           session.has_key?(:user_id)
