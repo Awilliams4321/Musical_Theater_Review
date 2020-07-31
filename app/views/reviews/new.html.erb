@@ -1,16 +1,19 @@
+<%= link_to 'Log Out', logout_path, method: :delete %>
+
 <h1> NEW REVIEW FORM </h1>
 
 <%= form_for @review do |f| %>
-<%= f.label :headline %>
-<%= f.text_field :headline %><br>
+<%= f.label 'Headline:' %><br>
+<%= f.text_area :headline %><br>
 <br>
 
-<%= f.label :content %>
-<%= f.text_field :content %><br>
+<%= f.label 'Content:' %><br>
+<%= f.text_area :content %><br>
 <br>
 
-<%= f.label :public_name %>
+<%= f.label 'Name:' %><br>
 <%= f.text_field :public_name %><br>
+<br>
 
 <%= f.submit 'Create Review' %>
 
