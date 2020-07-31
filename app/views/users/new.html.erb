@@ -1,7 +1,11 @@
-<h1> Welcome, sign up here! </h1>
+ <%= link_to 'Log In with Github', github_path %> or <%= link_to 'Log in to Existing Account', login_path %>  
+
+
+<h2> Welcome! </h2> 
+<p>Create a new account below</p> 
 
 <%= form_tag users_path do %>
-  <label>Email: </label>
+  <p><label>Email: </label>
   <%= text_field_tag :'user[email]' %>
   
  
@@ -12,6 +16,41 @@
   <%= text_field_tag :'user[password]' %><br>
   <br>
  
-  <%= submit_tag "Create" %>
+  <%= submit_tag "Create" %></p>
 
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="https://images.unsplash.com/photo-1568650436496-a2a288c7be3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=550&q=60" id="main photo">
+
+<style>
+body{
+  background:grey;
+  color:black;
+  font-size:25px;
+}
+h2{
+  text-align:center;
+}
+p{
+  text-align:center;
+}
+img{
+  height:90%;
+  width:100%;
+}
+</style>
+    
