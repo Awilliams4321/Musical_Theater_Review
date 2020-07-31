@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  root 'sessions#new'
   resources :users, only: [:new, :show, :create]
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#logout'
+
+
 
   get '/reviews', to: 'reviews#index'
   get '/reviews/new', to: 'reviews#new'
@@ -13,5 +19,6 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github'
   get '/auth/github/callback', to: 'sessions#github'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
