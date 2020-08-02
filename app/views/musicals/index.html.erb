@@ -1,1 +1,8 @@
- <%= link_to 'Log Out', logout_path %> 
+ <%= link_to 'Log Out', logout_path %> <br>
+ <h1> List of Colorado 2020 Musicals </h1>
+ 
+ <ul>
+ <% @musicals.each do |musical| %>    
+    <li><%= link_to musical.name, musical_path(musical.id) %></li>
+ <% end %>
+ </ul>
