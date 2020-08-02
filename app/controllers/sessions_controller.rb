@@ -21,15 +21,15 @@ class SessionsController < ApplicationController
 
     def github
         
-        # user = User.find_or_create_by(uid: auth['uid']) do |u|
-        #     u.name = auth['info']['name']
-        #     u.email = auth['info']['email']
-        #     u.image = auth['info']['image']
-        #   end
+        user = User.find_or_create_by(uid: github_params['uid']) do |u|
+            u.username = github_params['info']['name'] || github_params['info']['nickname']
+            u.email = github_params['info']['email']
+            u.password = github_params['credentials']['token']
+          end
        
-        #   session[:user_id] = user.id
+          session[:user_id] = user.id
        
-        #   redirect_to musicals_path
+          redirect_to musicals_path
 
     end
 
