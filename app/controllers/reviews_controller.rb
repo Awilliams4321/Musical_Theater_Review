@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
 
     def new
         @review = Review.new
+        @musicals = Musical.all
     end
 
     def create
