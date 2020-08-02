@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get '/reviews', to: 'reviews#index'
   get '/reviews/new', to: 'reviews#new'
   post '/reviews', to: 'reviews#create'
-  get 'reviews/:id', to: 'reviews#show'
+  get '/reviews/:id', to: 'reviews#show'
   get '/reviews/:id/edit', to: 'reviews#edit'
-  resources :musicals
+
+  get '/musicals', to: 'musicals#index'
+  get '/musicals/:id', to: 'musicals#show', as: 'musical'
 
 
   get '/auth/github', as: 'github'
