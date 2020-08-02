@@ -1,20 +1,24 @@
 <%= link_to 'Log Out', logout_path, method: :delete %>
 
-<h1> NEW REVIEW FORM </h1>
+<h2> Leave a Musical Review</h2>
 
 <%= form_for @review do |f| %>
-<%= f.label 'Headline:' %><br>
-<%= f.text_area :headline %><br>
+<p>Choose a Musical from the list below:</p>
+<%= f.collection_select :musical_name, @musicals, :name, :name %><br>
 <br>
 
-<%= f.label 'Content:' %><br>
-<%= f.text_area :content %><br>
-<br>
+    <%= f.label 'Headline:' %><br>
+    <%= f.text_area :headline %><br>
+    <br>
 
-<%= f.label 'Name:' %><br>
-<%= f.text_field :public_name %><br>
-<br>
+    <%= f.label 'Content:' %><br>
+    <%= f.text_area :content %><br>
+    <br>
 
-<%= f.submit 'Create Review' %>
+    <%= f.label 'Name:' %><br>
+    <%= f.text_field :public_name %><br>
+    <br>
+
+    <%= f.submit 'Create Review' %>
 
 <% end %>
