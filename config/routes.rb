@@ -7,15 +7,16 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#logout'
 
+  resources :musicals, only: [:index] do
+    resources :reviews, only: [:index, :new, :show]
+  end
 
+  # get '/reviews', to: 'reviews#index'
+  # get '/reviews/new', to: 'reviews#new'
+  # post '/reviews', to: 'reviews#create'
+  # get '/reviews/:id', to: 'reviews#show'
+  # get '/reviews/:id/edit', to: 'reviews#edit'
 
-  get '/reviews', to: 'reviews#index'
-  get '/reviews/new', to: 'reviews#new'
-  post '/reviews', to: 'reviews#create'
-  get '/reviews/:id', to: 'reviews#show'
-  get '/reviews/:id/edit', to: 'reviews#edit'
-
-  get '/musicals', to: 'musicals#index'
   get '/musicals/:id', to: 'musicals#show', as: 'musical'
 
 
