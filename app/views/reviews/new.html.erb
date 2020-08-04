@@ -4,12 +4,10 @@
 
 <%= form_for @review do |f| %>
 <p>Choose a Musical from the list below:</p>
-<%= f.collection_select :musical_name, @musicals, :name, :name %><br>
-<br>
+<p><%= f.collection_select(:musical_id, @musicals, :id, :name)%><br><p>
 
-    <%= f.label 'Headline:' %><br>
+    <p><%= f.label 'Headline:' %><br>
     <%= f.text_area :headline %><br>
-    <br>
 
     <%= f.label 'Content:' %><br>
     <%= f.text_area :content %><br>
@@ -21,4 +19,27 @@
 
     <%= f.submit 'Create Review' %>
 
-<% end %>
+<% end %></p>
+
+
+
+
+
+
+
+<style>
+body{
+  background:grey;
+  color:black;
+  font-size:25px;
+}
+h2{
+  text-align:center;
+}
+p{
+  text-align:center;
+}
+h5{
+    text-align:right;
+}
+</style>
