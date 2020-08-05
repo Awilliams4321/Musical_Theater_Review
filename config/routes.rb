@@ -8,16 +8,17 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout'
 
   resources :musicals, only: [:index] do
-    resources :reviews, only: [:index, :new, :show]
+    resources :reviews, only: [:show, :index, :update]
   end
 
-  # get '/reviews', to: 'reviews#index'
-  # get '/reviews/new', to: 'reviews#new'
-  # post '/reviews', to: 'reviews#create'
-  # get '/reviews/:id', to: 'reviews#show'
-  # get '/reviews/:id/edit', to: 'reviews#edit'
-
   get '/musicals/:id', to: 'musicals#show', as: 'musical'
+
+  get '/reviews', to: 'reviews#index'
+  get '/reviews/new', to: 'reviews#new'
+  post '/reviews', to: 'reviews#create'
+  get '/reviews/:id', to: 'reviews#show', as: 'review'
+  get '/reviews/:id/edit', to: 'reviews#edit'
+  patch '/reviews/:id', to: 'reviews#update'
 
 
   get '/auth/github', as: 'github'
