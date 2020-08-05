@@ -23,19 +23,23 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.find_by(params[:id])
+        @musical = Musical.find_by(params[:id])
+        @review = Review.new(review_params)
         if @review.save
-            redirect_to review_path
+            redirect_to review_path(@review)
         else
             render :new 
         end 
     end 
+
+    def edit
+    end
 
     private
     #Whitelisting attributes(permitting mass assignment)
     #Strong params
 
     def review_params
-        params.require(:review).permit(:musical_id, :id, :headline, :content, :public_name)
+        params.require(:review).permit(:musical_id, :headline, :content, :public_name)
     end 
 end
