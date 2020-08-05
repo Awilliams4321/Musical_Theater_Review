@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/reviews/:id', to: 'reviews#show', as: 'review'
   get '/reviews/:id/edit', to: 'reviews#edit'
   patch '/reviews/:id', to: 'reviews#update'
+  delete '/reviews/:id', to: 'reviews#destroy'
 
 
   get '/auth/github', as: 'github'
