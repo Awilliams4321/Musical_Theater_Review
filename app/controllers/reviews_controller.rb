@@ -33,7 +33,16 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
+        @musical = Musical.find_by(params[:id])
+        @review = Review.find_by(params[:id])
     end
+
+    def update
+        @review = Review.find(params[:id])
+        @review.update(review_params)
+        redirect_to review_path(@review)
+    end
+        
 
     private
     #Whitelisting attributes(permitting mass assignment)
