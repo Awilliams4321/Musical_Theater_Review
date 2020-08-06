@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#logout'
+  delete '/logout', to: 'sessions#logout'
 
   resources :musicals, only: [:index] do
     resources :reviews, only: [:show, :index, :update]
