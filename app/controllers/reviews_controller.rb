@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     # before_action :set_method, only: [:new, :create, :update, :destroy] 
+    before_action :is_logged_in?, except: :index
 
     def index
         if params[:musical_id]
@@ -33,14 +34,26 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
+        # redirect to "/" if !is_logged_in?
+
         @musical = Musical.find_by(params[:id])
         @review = Review.find_by(params[:id])
     end
 
     def update
+        # redirect to "/" if !is_logged_in?
+
         @review = Review.find(params[:id])
         @review.update(review_params)
         redirect_to review_path(@review)
+    end
+
+    def destroy
+        # redirect to "/" if !is_logged_in?
+
+        @review = Review.find_by(params[:id])
+        @review.destroy
+        redirect_to reviews_path
     end
         
 
