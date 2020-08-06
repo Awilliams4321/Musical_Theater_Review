@@ -5,7 +5,7 @@ class MusicalsController < ApplicationController
     end
 
     def show
-        @musical = Musical.find_by(params[:id])
+        @musical = Musical.find_by(id: params[:id])
     end
 
 end
