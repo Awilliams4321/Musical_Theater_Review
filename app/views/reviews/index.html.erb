@@ -1,8 +1,36 @@
-<%= link_to 'Log Out', logout_path, method: :delete %>
 
-<% @reviews.each do |r| %>
-    <%= r.headline %><br>
-    <%= r.content %><br>
-    <%= r.public_name %>
-<% end %>    
+<h1>Your reviews:</h1>
 
+<p><% @reviews.each do |r| %>
+    <strong><%= r.musical.name %></strong><br>
+    **<%= r.headline %>**<br>
+    "<%= r.content %>"<br>
+    ~<%= r.public_name %><br>
+    <br>
+<% end %></p>    
+
+<p><%= link_to 'Return to the Musicals List', musicals_path %></p> 
+
+
+
+
+
+
+
+
+
+
+
+<style>
+body{
+  background:grey;
+  color:black;
+  font-size:25px;
+}
+h1{
+  text-align:center;
+}
+p{
+  text-align:center;
+}
+</style>
