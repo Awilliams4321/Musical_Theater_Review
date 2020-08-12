@@ -1,0 +1,15 @@
+<%= link_to 'Create a New Account', new_user_path %> or <%= link_to 'Log In with Github', github_path %> 
+
+<h3>Sign in! </h3>
+
+<%= form_tag login_path do %>
+  <p><label>Email: </label>
+  <%= text_field_tag :'session[email]' %>
+
+  <label>Password:</label>
+  <%= text_field_tag :'session[password]' %><br>
+  <br>
+ 
+  <%= submit_tag "Sign In" %></p><br>
+
+<% end %>
