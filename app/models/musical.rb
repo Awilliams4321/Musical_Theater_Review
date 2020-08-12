@@ -4,7 +4,6 @@ class Musical < ApplicationRecord
 
     accepts_nested_attributes_for :reviews, allow_destroy: true
 
-
     def musical_id=(id)
         musical = Musical.find_or_create_by(id: id)
         self.id = id
