@@ -1,5 +1,3 @@
-<%= link_to 'Log Out', logout_path %>  
-
 <h2><%= @musical.name %></h2>
 
 <p><%= @musical.city %>, <%= @musical.state %> - <%= @musical.venue %></p>
@@ -8,16 +6,16 @@
 
 <p><%= @musical.info %></p><br>
 
-<%= link_to 'Leave a Review', reviews_new_path %>
+<%= link_to 'Leave a Review', new_musical_review_path(@musical.id) %>
 
 
 <h3> Critics Reviews:</h3>
 
 <% @musical.reviews.each do |review| %>
-  <div><%= review.headline %></div>
+  <div>**<%= review.headline %>**</div>
   <%= review.content %><br>
-  <%= review.public_name%><br>
-  <br>
+  ~ <%= review.public_name%><br>
+  <br><br>
 <% end %>
 
 
