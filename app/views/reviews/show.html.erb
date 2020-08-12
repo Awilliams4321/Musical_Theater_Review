@@ -1,21 +1,6 @@
-<%= link_to 'Log Out', logout_path, method: :delete %><br>
-
-<p>Review for Musical: <%= @musical.name %><br>
-<%= @review.headline %><br>
-<%= @review.content %><br>
-<%= @review.public_name %></p>
-</div>
-
-
-<style>
-body{
-  background:grey;
-  color:black;
-  font-size:25px;
-}
-
-p{
-  text-align:center;
-}
-
-</style>
+<p>Review for Musical: <%= @review.musical.name %><br>
+**<%= @review.headline %>**<br>
+"<%= @review.content %>"<br>
+~<%= @review.public_name %></p>
+<p><a href="/reviews/<%= @review.id%>/edit">Edit Review</a></p><br>
+<p>* If satisfied with your review, <%= link_to 'Return to the Musicals List', musicals_path %> or <%= link_to 'View All Submitted Reviews', reviews_path %>*</p> 
