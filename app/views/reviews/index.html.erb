@@ -5,7 +5,12 @@
     **<%= r.headline %>**<br>
     "<%= r.content %>"<br>
     ~<%= r.public_name %><br>
-    <%= link_to "Delete", musical_review_path(r.musical_id, r.id), method: :delete %>
+    <%# <%= link_to "Delete", musical_review_path(r.musical_id, r.id), method: :delete %> %>
+
+    <%= form_tag review_path(r.id), method: "delete" do  %>
+    <%= submit_tag "Delete" %>
+    <% end %>
+  
     <%= link_to "Edit", edit_musical_review_path(r.musical_id, r.id) %>
     <br>
 <% end %></p>   
