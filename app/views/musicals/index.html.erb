@@ -1,9 +1,8 @@
- <%= link_to 'Log Out', logout_path %> <br>
- <h1> Musicals at the Buell Theatre (2020) </h1>
+ <h3> Musicals at the Buell Theatre (2020) </h3>
  
  <ul>
- <% @musicals.each do |musical| %>    
-    <li><%= link_to musical.name, musical_path(musical.id) %></li>
+ <% @musicals.each do |musical| %>   
+    <li><%= link_to musical.name, musical_path(musical) %></li>
  <% end %>
  </ul>
 
@@ -11,7 +10,7 @@
 
 
 
- 
+
 
 <style>
 body{
@@ -19,7 +18,10 @@ body{
   color:black;
   font-size:25px;
 }
-h1{
+h2{
+  text-align:center;
+}
+h3{
   text-align:center;
 }
 p{
