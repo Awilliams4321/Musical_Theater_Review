@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
         @musical = Musical.find(params[:musical_id])
         @review = @musical.reviews.create(review_params)
         if @review.save
-            redirect_to musical_reviews_path(@review)
+            redirect_to reviews_path(@review.id)
         else
             render :new 
         end 
@@ -23,10 +23,10 @@ class ReviewsController < ApplicationController
 
     def index
         if params[:musical_id]
-            @musicals = Musical.all
-            @reviews = Review.all
+            @musical = Musical.find_by(id: params[:musical_id])
+            @reviews = @musical.reviews
         else
-            @review = Review.find_by(id: params[:id])
+            @reviews = Review.all
         end
     end 
 
@@ -37,8 +37,7 @@ class ReviewsController < ApplicationController
 
     def edit
         @musical = Musical.find_by(id: params[:musical_id])
-        @review = @musical.reviews 
-        # Review.find_by(params[:id])
+        @review =  Review.find_by(id: params[:id])
     end
 
     def update
