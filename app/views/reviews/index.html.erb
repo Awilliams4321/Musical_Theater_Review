@@ -1,4 +1,3 @@
-
 <h1>Your reviews:</h1>
 
 <p><% @reviews.each do |r| %>
@@ -6,11 +5,12 @@
     **<%= r.headline %>**<br>
     "<%= r.content %>"<br>
     ~<%= r.public_name %><br>
+    <%= link_to "Delete", musical_review_path(r.musical_id, r.id), method: :delete %>
+    <%= link_to "Edit", edit_musical_review_path(r.musical_id, r.id) %>
     <br>
-<% end %></p>    
+<% end %></p>   
 
 <p><%= link_to 'Return to the Musicals List', musicals_path %></p> 
-
 
 
 
