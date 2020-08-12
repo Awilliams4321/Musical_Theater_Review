@@ -32,3 +32,5 @@
 
 # # name, url, info, classifications
 
+# Musical.create(name: "Hamilton", city: "Denver,CO", info: "Alexander Hamilton Biography")
+Musical.create(name: "My Fair Lady", city: "Denver,CO", info: "Throwback to 90's songs.")
