@@ -1,13 +1,13 @@
 <h2>Edit your review below:</h2>
-<h3><%= @musical_id %></h3>
+<%# byebug %>
+<h3><%= @musical.name %></h3>
 
 <%= form_for ([@musical, @review]) do |f| %>
-<p><%= f.collection_select(:musical_id, @musicals, :id, :name)%><br><p>
-
+  <%= f.hidden_field :musical_id %>
 
     <p><%= f.label 'Headline:' %><br>
     <%= f.text_area :headline %><br>
-
+  
     <%= f.label 'Content:' %><br>
     <%= f.text_area :content %><br>
     <br>
