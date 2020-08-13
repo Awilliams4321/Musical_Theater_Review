@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
   root 'users#new'
-  resources :users, only: [:new, :show, :create]
+  resources :users, only: [:new, :show, :create] do
+    resources :reviews
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#login'
-  delete '/logout', to: 'sessions#logout'
+  get '/logout', to: 'sessions#logout'
 
   resources :musicals, only: [:index] do
     resources :reviews
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
   get '/musicals/:id', to: 'musicals#show', as: 'musical'
 
   get '/reviews', to: 'reviews#index'
-  # get '/reviews/new', to: 'reviews#new'
   post '/reviews', to: 'reviews#create'
   get '/reviews/:id', to: 'reviews#show', as: 'review'
   get '/reviews/:id/edit', to: 'reviews#edit'
