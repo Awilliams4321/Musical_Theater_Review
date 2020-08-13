@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
             redirect_to users_show_path(@user)
             binding.pry
         else
-            # flash[:error] = "Invalid Email or Password. Please Try Again."
+            flash[:error] = "Invalid Email or Password. Please Try Again."
             redirect_to login_path
         end
     end
 
     def logout
         session.clear
-        redirect_to login_path
+        redirect_to new_users_path
     end
 
     def github
