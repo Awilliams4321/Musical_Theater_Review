@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         else
             flash[:error] = "Invalid Email or Password. Please Try Again."
-            redirect_to '/login'
+            redirect_to root_path
         end
     end
 
