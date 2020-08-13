@@ -1,4 +1,6 @@
 class MusicalsController < ApplicationController
+    include ApplicationHelper
+    before_action :require_login
 
     def index
         @user = User.find_by(id: params[:id])
@@ -12,7 +14,7 @@ class MusicalsController < ApplicationController
     private
 
     def musical_params
-        params.require(:musical).permit(:name, :city, :state, :venue, :date, :info, :genre) #add reviews_attr.
+        params.require(:musical).permit(:name, :city, :state, :venue, :date, :info, :genre) 
     end 
 
 end
