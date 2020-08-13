@@ -1,21 +1,22 @@
 class ReviewsController < ApplicationController
-    # before_action :set_method, only: [:new, :create, :update, :destroy]
-    # before_action :is_logged_in?
+    include ApplicationHelper
+    before_action :require_login
+    before_action :find_musical, only: [:new, :create, :show, :edit]
+    before_action :find_review, only: [:show, :edit, :update, :destroy]
+    before_action :current_user, only:  [:new, :create, :edit, :update]
 
     def new
         @review = Review.new
         @musicals = Musical.all
-        @musical = Musical.find_by(id: params[:musical_id])
-        # @musical = Musical.find_by(params[:id])
-
         @review.build_musical(id: params[:musical_id])
     end
 
     def create
-        @musical = Musical.find(params[:musical_id])
+        @musicals = Musical.all
         @review = @musical.reviews.create(review_params)
-        if @review.save
-            redirect_to reviews_path(@review.id)
+        if @review.user_id == current_user.id
+            @review.save
+            redirect_to reviews_path(@review)
         else
             render :new 
         end 
@@ -31,25 +32,35 @@ class ReviewsController < ApplicationController
     end 
 
     def show 
-        @review = Review.find_by(id: params[:id])
-
     end 
 
     def edit
-        @musical = Musical.find_by(id: params[:musical_id])
-        @review =  Review.find_by(id: params[:id])
+        if @review && @review.user_id = current_user.id
+            render
+        else          
+            flash[:errors] = "You can't edit a review you didn't create!"
+            redirect_to musicals_path
+        end
     end
 
     def update
-        @review = Review.find(params[:id])
-        @review.update(review_params)
-        redirect_to musical_review_path(@review)
+        if @review && @review.user_id = current_user.id
+            @review.update(review_params)
+            redirect_to musical_review_path(@review)
+        else
+            flash[:errors] = "You can't edit a review you didn't create!"
+            redirect_to musicals_path
+        end
     end
 
     def destroy
-        @review = Review.find_by(id: params[:id])
-        @review.destroy
-        redirect_to reviews_path
+        if @review && @review.user_id = current_user.id
+            @review.destroy
+            redirect_to reviews_path
+        else 
+            flash[:errors] = "You can't delete a review you didn't create!"
+            redirect_to root_path
+        end
     end
        
 
@@ -61,15 +72,12 @@ class ReviewsController < ApplicationController
         params.require(:review).permit(:musical_id, :headline, :content, :public_name, musicals_attributes: [:name, :musical_id]) #users and musicals attr.
     end 
 
-    def is_logged_in?
-        unless session.has_key?(:user_id)
-            flash[:error] = "You must be logged in to access this section"
-            redirect_to root_path
-        end
+    def find_musical
+        @musical = Musical.find_by(id: params[:musical_id])
     end
-   
-    def current_user
-        @current_user ||= User.find(session[:user_id]) if is_logged_in?
+
+    def find_review
+        @review = Review.find_by(id: params[:id])
     end
 end
 
