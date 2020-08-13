@@ -1,3 +1,5 @@
+<%= link_to 'LogOut', login_path %>
+
 <h1>Your reviews:</h1>
 
 <p><% @reviews.each do |r| %>
@@ -5,14 +7,13 @@
     **<%= r.headline %>**<br>
     "<%= r.content %>"<br>
     ~<%= r.public_name %><br>
-    <%# <%= link_to "Delete", musical_review_path(r.musical_id, r.id), method: :delete %> %>
 
     <%= form_tag review_path(r.id), method: "delete" do  %>
     <%= submit_tag "Delete" %>
     <% end %>
   
     <%= link_to "Edit", edit_musical_review_path(r.musical_id, r.id) %>
-    <br>
+    <br><br>
 <% end %></p>   
 
 <p><%= link_to 'Return to the Musicals List', musicals_path %></p> 
@@ -32,10 +33,5 @@ body{
   color:black;
   font-size:25px;
 }
-h1{
-  text-align:center;
-}
-p{
-  text-align:center;
-}
+
 </style>

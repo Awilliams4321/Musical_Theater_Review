@@ -1,5 +1,8 @@
+<%= link_to 'LogOut', login_path %>
+
 <%= form_for ([@musical, @review]) do |f| %>
-<p>Choose a Musical from the list below:</p>
+
+
 <p><%= f.collection_select(:musical_id, @musicals, :id, :name)%><br><p>
 
     <p><%= f.label 'Headline:' %><br>

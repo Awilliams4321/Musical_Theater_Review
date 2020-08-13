@@ -1,6 +1,7 @@
+<%= link_to 'LogOut', login_path %>
+
 <h2>Edit your review below:</h2>
-<%# byebug %>
-<h3><%= @musical.name %></h3>
+<h3><%= @review.musical.name %></h3> 
 
 <%= form_for ([@musical, @review]) do |f| %>
   <%= f.hidden_field :musical_id %>
@@ -17,10 +18,12 @@
     <br>
 
     <%= f.submit 'Update Review' %>
-    <%= button_to "Delete Review", review_path(@review), method: :delete %>
-
 
 <% end %></p>
+
+
+
+
 
 
 
