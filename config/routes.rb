@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github'
   get '/auth/github/callback', to: 'sessions#github'
-  get '/auth/github/callback', to: 'sessions#github'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
