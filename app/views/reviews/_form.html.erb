@@ -1,9 +1,9 @@
-<%= link_to 'LogOut', login_path %>
 
 <%= form_for ([@musical, @review]) do |f| %>
 
 
-<p><%= f.collection_select(:musical_id, @musicals, :id, :name)%><br><p>
+<p><%= f.collection_select(:musical_id, @musicals, :id, :name)%><br><p> 
+    <%= f.hidden_field :musical_id %> 
 
     <p><%= f.label 'Headline:' %><br>
     <%= f.text_area :headline %><br>
@@ -19,3 +19,4 @@
     <p><%= f.submit 'Create Review' %></p>
 
 <% end %>
+
