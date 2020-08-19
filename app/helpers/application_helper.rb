@@ -6,10 +6,11 @@ module ApplicationHelper
 
   def require_login
     if !session.include? :user_id
-      flash[:errors] = "You must be logged in to do that!"
-      redirect_to root_path
+      redirect_to root_path, danger: "You must be logged in to do that!"
     end 
   end
+
+  
 
 end
   
