@@ -13,10 +13,10 @@ class ReviewsController < ApplicationController
 
     def create
         @musicals = Musical.all
-        @review = @musical.reviews.create(review_params)
-        if @review.user_id == current_user.id
-            @review.save
-            redirect_to reviews_path(@review)
+        @review = @musical.reviews.build(review_params)
+        @review.user_id = current_user.id
+        if @review.save
+            redirect_to review_path(@review)
         else
             render :new 
         end 
@@ -35,31 +35,28 @@ class ReviewsController < ApplicationController
     end 
 
     def edit
-        if @review && @review.user_id = current_user.id
+        if @review && @review.user_id == current_user.id
             render
         else          
-            flash[:errors] = "You can't edit a review you didn't create!"
-            redirect_to musicals_path
+            redirect_to musicals_path, danger: "You can't edit a review you didn't create!"
         end
     end
 
     def update
-        if @review && @review.user_id = current_user.id
+        if @review && @review.user_id == current_user.id
             @review.update(review_params)
-            redirect_to musical_review_path(@review)
+            redirect_to musical_review_path(@review.musical, @review)
         else
-            flash[:errors] = "You can't edit a review you didn't create!"
-            redirect_to musicals_path
+            redirect_to musicals_path, danger: "You can't edit a review you didn't create!"
         end
     end
 
     def destroy
-        if @review && @review.user_id = current_user.id
+        if @review && @review.user_id == current_user.id
             @review.destroy
             redirect_to reviews_path
         else 
-            flash[:errors] = "You can't delete a review you didn't create!"
-            redirect_to root_path
+            redirect_to musicals_path, danger: "You can't delete a review you didn't create!"
         end
     end
        
