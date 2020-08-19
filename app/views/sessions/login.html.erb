@@ -2,18 +2,22 @@
 
 <h3>Sign in! </h3>
 
-<%= form_tag login_path do %>
-  <p><label>Email: </label>
-  <%= text_field_tag :'session[email]' %>
+<%= form_tag ('/login') do |f| %>
+<p>  Email: <%= text_field_tag :email %>
 
-  <label>Password:</label>
-  <%= text_field_tag :'session[password]' %><br>
+  Password: <%= text_field_tag :password %><br>
   <br>
  
   <%= submit_tag "Sign In" %></p><br>
 
 <% end %>
 
+<%# Wont work for some reason %>
+<%# login_path do %>
+<%# <p><label>Email: </label> %>
+<%# <%= text_field_tag :'session[email]' %>
+<%# <label>Password:</label>
+<%= text_field_tag :'session[password]' %>
 
 
 
