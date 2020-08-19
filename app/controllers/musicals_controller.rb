@@ -1,11 +1,12 @@
 class MusicalsController < ApplicationController
     include ApplicationHelper
-    before_action :require_login
+    before_action :require_login, only: [:index, :show]
 
     def index
         @user = User.find_by(id: params[:id])
         @musicals = Musical.all
     end
+
 
     def show
         @musical = Musical.find_by(id: params[:id])
