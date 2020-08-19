@@ -1,19 +1,20 @@
 class SessionsController < ApplicationController
 
     def new
+        @user = User.new
         render :login
     end
 
     def login
+        # binding.pry
         @user = User.find_by(email: params[:email])
-       
+        
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to users_show_path(@user)
-            binding.pry
+            redirect_to user_path(@user)
+            # users_show_path(@user)
         else
-            flash[:error] = "Invalid Email or Password. Please Try Again."
-            redirect_to login_path
+            redirect_to login_path, danger: "Invalid email or password."
         end
     end
 
