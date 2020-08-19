@@ -1,3 +1,9 @@
+<% if @user.errors.any? %>
+ <% @user.errors.full_messages.each do |mess| %>
+  <li><%= mess %></li>
+  <% end %>
+<% end %>
+
 <%= link_to 'Log In with Github', github_path %> or <%= link_to 'Log in to Existing Account', login_path %> 
 
 
@@ -7,10 +13,6 @@
 <%= form_tag users_path do %>
   <p><label>Email: </label>
   <%= text_field_tag :'user[email]' %>
- 
- 
-  <label>Username:</label>
-  <%= text_field_tag :'user[username]' %>
 
   <label>Password:</label>
   <%= text_field_tag :'user[password]' %><br>
