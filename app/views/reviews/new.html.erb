@@ -1,5 +1,11 @@
 <%= link_to 'LogOut', login_path %>
 
+<% if @review.errors.any? %>
+ <% @review.errors.full_messages.each do |mess| %>
+  <li><%= mess %></li>
+  <% end %>
+<% end %>
+
 <h2> Leave a Musical Review</h2>
 <p>Choose a Musical from the list below:</p>
 
