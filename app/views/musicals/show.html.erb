@@ -8,7 +8,7 @@
 
 <p><%= @musical.info %></p><br>
 
-<%= link_to 'Leave a Review', new_musical_review_path(@musical.id) %>
+<%= link_to 'Leave a Review', new_musical_review_path(@musical.id) %> or <%= link_to 'View All Submitted Reviews', user_reviews_path(current_user) %>
 
 
 <h3> Critics Reviews:</h3>
