@@ -5,7 +5,7 @@
 "<%= @review.content %>"<br>
 ~<%= @review.public_name %></p>
 <p><%= link_to "Edit Review", edit_musical_review_path(@review.musical, @review)%> </p>
-<p>* If satisfied with your review, <%= link_to 'Return to the Musicals List', musicals_path %> or <%= link_to 'View All Submitted Reviews', reviews_path %>*</p> 
+<p>* If satisfied with your review, <%= link_to 'Return to the Musicals List', musicals_path %> or <%= link_to 'View All Submitted Reviews', user_reviews_path(@user) %>*</p> 
 
 
 
