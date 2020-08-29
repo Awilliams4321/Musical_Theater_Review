@@ -26,6 +26,10 @@ class ReviewsController < ApplicationController
         if params[:musical_id]
             @musical = Musical.find_by(id: params[:musical_id])
             @reviews = @musical.reviews
+        elsif
+            params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            @reviews = @user.reviews.most_recent
         else
             @reviews = Review.all
         end
@@ -66,7 +70,7 @@ class ReviewsController < ApplicationController
     #Strong params
 
     def review_params
-        params.require(:review).permit(:musical_id, :headline, :content, :public_name, musicals_attributes: [:name, :musical_id]) #users and musicals attr.
+        params.require(:review).permit(:musical_id, :headline, :content, :public_name, musicals_attributes: [:name, :musical_id])
     end 
 
     def find_musical
